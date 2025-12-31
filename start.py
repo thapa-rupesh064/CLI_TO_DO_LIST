@@ -7,17 +7,33 @@
 
 
 '''
+tasks = [] # An empty list to store the tasks..
 def add_task():
-    pass
-
+    task_name = input("Enter the task: ")
+    tasks.append({"task": task_name,"done": False})
+    print("Task added successfully!")
 def view_task():
-    pass
+    if not tasks:
+        print("No task yet!")
+    else:
+        print("---- All Tasks ----")
+        for i, task in enumerate(tasks, start=1):
+            box = "✔" if task["done"] else " "  
+            print(f"{i}. [{box}] {task['task']}")
 
 def check_task():
-    pass
+    view_task()
+    task_id = int(input("Enter task id to mark done: "))
+
 
 def remove_task():
-    pass
+    view_task()
+    task_id = int(input("Enter task id to remove: "))
+    if 1 <= task_id <= len(tasks):
+        removed_task = tasks.pop(task_id-1)
+        print(f"Task no. {task_id} removed successfully!")
+    else:
+        print("Invalid task number!")
 
 def main():
     while True:
@@ -27,6 +43,7 @@ def main():
         print("3.Mark task done.")
         print("4.Remove a task.")
         print("5.Exit")
+        print("___________________")
         choice = int(input("Enter a choice(1-5):"))
         if choice == 1:
             add_task()
