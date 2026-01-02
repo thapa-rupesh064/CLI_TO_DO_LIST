@@ -1,10 +1,4 @@
-'''
-1. add task
-2. view task
-3. mark done
-4. remove task
-
-'''
+# Terminal Based To do list project: 
 tasks = [] # An empty list to store the tasks..
 def add_task():
     task_name = input("Enter the task: ")
