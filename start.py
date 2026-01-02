@@ -4,8 +4,6 @@
 3. mark done
 4. remove task
 
-
-
 '''
 tasks = [] # An empty list to store the tasks..
 def add_task():
@@ -23,9 +21,13 @@ def view_task():
 
 def check_task():
     view_task()
-    task_id = int(input("Enter task id to mark done: "))
-
-
+    if view_task() != 1: 
+        task_id = int(input("Enter task id to mark done: "))
+        if 1 <= task_id <= len(tasks):
+            tasks[task_id - 1]["done"] = True
+            print(f"{task_id} task successfully marked done.")
+        else:
+            print("Invalid task number.")
 def remove_task():
     view_task()
     task_id = int(input("Enter task id to remove: "))
