@@ -12,10 +12,11 @@ def view_task():
         for i, task in enumerate(tasks, start=1):
             box = "✔" if task["done"] else " "  
             print(f"{i}. [{box}] {task['task']}")
-
+    print("____________________")
 def check_task():
     view_task()
-    if view_task() != 1: 
+
+    if tasks: 
         task_id = int(input("Enter task id to mark done: "))
         if 1 <= task_id <= len(tasks):
             tasks[task_id - 1]["done"] = True
