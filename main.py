@@ -1,11 +1,11 @@
 # Terminal Based To do list project: 
 tasks = [] # An empty list to store the tasks..
 def add_task():
-    task_name = input("Enter the task: ")
+    task_name = input("Enter the task: ") # error handling 
     tasks.append({"task": task_name,"done": False})
     print("Task added successfully!")
 def view_task():
-    if not tasks:
+    if ("to_do.txt" == ""):
         print("No task yet!")
     else:
         print("---- All Tasks ----")
@@ -15,12 +15,12 @@ def view_task():
     print("____________________")
 def check_task():
     view_task()
-
     if tasks: 
         task_id = int(input("Enter task id to mark done: "))
         if 1 <= task_id <= len(tasks):
             tasks[task_id - 1]["done"] = True
-            print(f"{task_id} task successfully marked done.")
+            print(f"task no. {task_id} successfully marked done.")
+            view_task()
         else:
             print("Invalid task number.")
 def remove_task():
@@ -29,6 +29,7 @@ def remove_task():
     if 1 <= task_id <= len(tasks):
         removed_task = tasks.pop(task_id-1)
         print(f"Task no. {task_id} removed successfully!")
+        view_task()
     else:
         print("Invalid task number!")
 
