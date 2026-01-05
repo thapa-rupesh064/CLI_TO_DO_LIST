@@ -2,16 +2,22 @@
 tasks = [] # An empty list to store the tasks..
 def add_task():
     task_name = input("Enter the task: ") # error handling 
-    tasks.append({"task": task_name,"done": False})
-    print("Task added successfully!")
-def view_task():
-    if ("to_do.txt" == ""):
-        print("No task yet!")
+    if (task_name != ""):
+        tasks.append({"task": task_name,"done": False})
+        print("Task added successfully!")
     else:
-        print("---- All Tasks ----")
-        for i, task in enumerate(tasks, start=1):
-            box = "✔" if task["done"] else " "  
-            print(f"{i}. [{box}] {task['task']}")
+        print("Nothing was added.")
+def view_task():
+    if (tasks != ""):
+        if not tasks:
+            print("No task yet!")
+        else:
+            print("---- All Tasks ----")
+            for i, task in enumerate(tasks, start=1):
+                box = "✔" if task["done"] else " "  
+                print(f"{i}.  {task['task']} [{box}]")
+    else:
+        print("No task yet!")
     print("____________________")
 def check_task():
     view_task()
