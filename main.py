@@ -21,24 +21,27 @@ def view_task():
     print("____________________")
 def check_task():
     view_task()
-    if tasks: 
-        task_id = int(input("Enter task id to mark done: "))
-        if 1 <= task_id <= len(tasks):
-            tasks[task_id - 1]["done"] = True
-            print(f"task no. {task_id} successfully marked done.")
-            view_task()
-        else:
-            print("Invalid task number.")
+    try:
+        if tasks: 
+            task_id = int(input("Enter task id to mark done: "))
+            if 1 <= task_id <= len(tasks):
+                tasks[task_id - 1]["done"] = True
+                print(f"task no. {task_id} successfully marked done.")
+                view_task()
+            else:
+                print("Invalid task number.")
+    except:
+        print("There is no task!")
 def remove_task():
     view_task()
-    task_id = int(input("Enter task id to remove: "))
-    if 1 <= task_id <= len(tasks):
-        removed_task = tasks.pop(task_id-1)
-        print(f"Task no. {task_id} removed successfully!")
-        view_task()
-    else:
-        print("Invalid task number!")
-
+    if  tasks:
+        task_id = int(input("Enter task id to remove: "))
+        if 1 <= task_id <= len(tasks):
+            removed_task = tasks.pop(task_id-1)
+            print(f"Task no. {task_id} removed successfully!")
+            view_task() if tasks != "" else 0
+        else:
+            print("Invalid task number!")
 def main():
     while True:
         print("____TO DO LIST____")
@@ -48,16 +51,16 @@ def main():
         print("4.Remove a task.")
         print("5.Exit")
         print("___________________")
-        choice = int(input("Enter a choice(1-5):"))
-        if choice == 1:
+        choice = (input("Enter a choice(1-5):"))
+        if choice == '1':
             add_task()
-        elif choice == 2:
+        elif choice == '2':
             view_task()
-        elif choice == 3:
+        elif choice == '3':
             check_task()
-        elif choice == 4:
+        elif choice == '4':
             remove_task()
-        elif choice == 5:
+        elif choice == '5':
             print("Exiting....")
             break
         else:
